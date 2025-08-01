@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: batchproject
+  datasource:
+    jdbcUrl: jdbc:mysql://localhost:3306/spring_batch?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
+    username: root
+    password: senha123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+  batch:
+    datasource:
+      initialize-schema: always
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
+#      name: printHelloJob
+
+app:
+  datasource:
+    jdbcUrl: jdbc:mysql://localhost:3306/app_spring_batch?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
+    username: root
+    password: senha123
+
+logging:
+  level:
+    root: INFO
+    org.springframework.batch.core: INFO
+    org.springframework.batch.item: DEBUG
+    org.springframework.batch.repeat: INFO
+    org.springframework.transaction: DEBUG
