@@ -36,10 +36,21 @@ public class BatchprojectApplication implements CommandLineRunner {
 //	@Qualifier("jdbcCursorReaderJob")
 //	private Job job;
 
-	@Autowired
-	@Qualifier("jdbcPagingReaderJob")
-	private Job job;
+//	@Autowired
+//	@Qualifier("jdbcPagingReaderJob")
+//	private Job job;
 
+//	@Autowired
+//	@Qualifier("processorValidacaoJob")
+//	private Job job;
+
+//	@Autowired
+//	@Qualifier("processorScriptJob")
+//	private Job job;
+
+	@Autowired
+	@Qualifier("processorClassifierJob")
+	private Job job;
 
 //	private static final Logger logger = LoggerFactory.getLogger(BatchprojectApplication.class);
 
@@ -65,6 +76,7 @@ public class BatchprojectApplication implements CommandLineRunner {
 				//.addString("clientsFile", "file:files/clientes_delimitado.txt")
 				//.addString("clientsFile", "file:files/clientes_multiformats.txt")
 				//.addString("clientsFiles", "file:files/clients*")
+				.addString("clientsFile", "file:files/clientes_classifier.txt")
 				.addLong("timestamp", System.currentTimeMillis())
 				.toJobParameters();
 
