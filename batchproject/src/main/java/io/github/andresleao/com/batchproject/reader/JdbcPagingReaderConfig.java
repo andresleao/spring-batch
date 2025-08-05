@@ -17,8 +17,8 @@ public class JdbcPagingReaderConfig {
 
     @Bean
     public JdbcPagingItemReader<Cliente> jdbcPagingReader(
-            @Qualifier("appDataSource") DataSource dataSource,
-            PagingQueryProvider queryProvider
+        @Qualifier("appDataSource") DataSource dataSource,
+        PagingQueryProvider queryProvider
     ) {
         return  new JdbcPagingItemReaderBuilder<Cliente>()
                 .name("jdbcPagingReader")

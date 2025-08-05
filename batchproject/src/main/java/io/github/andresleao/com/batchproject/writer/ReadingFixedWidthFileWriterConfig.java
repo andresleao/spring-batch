@@ -10,18 +10,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.WritableResource;
 
 @Configuration
-public class ReadingDelimitedFileWriterConfig {
+public class ReadingFixedWidthFileWriterConfig {
 
-    @Bean("readingDelimitedFileWriter")
+    @Bean("readingFixedWidthFileWriter")
     @StepScope
-    public FlatFileItemWriter<Cliente> readingDelimitedFileWriter(
-        @Value("#{jobParameters['outputClientsFile']}") WritableResource outputClientsFile
+    public FlatFileItemWriter<Cliente> readingFixedWidthFileWriter(
+            @Value("#{jobParameters['outputClientsFile']}") WritableResource outputClientsFile
     ) {
         return new FlatFileItemWriterBuilder<Cliente>()
-                .name("readingDelimitedFileWriter")
+                .name("readingFixedWidthFileWriter")
                 .resource(outputClientsFile)
-                .delimited()
-                .delimiter(",")
+                .formatted()
+                .format("%-10s%-10s%-3s%-20s")
                 .names("nome", "sobrenome", "idade", "email")
                 .build();
     }

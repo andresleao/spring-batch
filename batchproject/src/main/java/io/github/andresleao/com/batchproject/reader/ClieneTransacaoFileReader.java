@@ -13,7 +13,6 @@ public class ClieneTransacaoFileReader implements ItemStreamReader<Cliente>, Res
 
     private Object currentObj;
     private FlatFileItemReader<Object> delegate;
-    //private ItemStreamReader<Object> delegate;
 
     public ClieneTransacaoFileReader(FlatFileItemReader<Object> delegate) {
         this.delegate = delegate;

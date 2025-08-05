@@ -16,7 +16,7 @@ public class ReadingFixedWidthFileReaderConfig {
     @Bean
     @StepScope
     public FlatFileItemReader<Cliente> readingFixedWidthFileReader(
-            @Value("#{jobParameters['clientsFile']}") Resource clientsFile
+        @Value("#{jobParameters['clientsFile']}") Resource clientsFile
     ) {
         return new FlatFileItemReaderBuilder<Cliente>()
                 .name("readingFixedWidthFileReader")
@@ -29,6 +29,7 @@ public class ReadingFixedWidthFileReaderConfig {
                         new Range(24)
                 )
                 .names("nome", "sobrenome", "idade", "email")
+                .strict(false)
                 //.fieldSetMapper(new ClienteFieldSetMapper())
                 .targetType(Cliente.class)
                 .build();

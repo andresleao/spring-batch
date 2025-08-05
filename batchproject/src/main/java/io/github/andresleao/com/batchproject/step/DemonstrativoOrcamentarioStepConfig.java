@@ -1,6 +1,6 @@
 package io.github.andresleao.com.batchproject.step;
 
-import io.github.andresleao.com.batchproject.domain.Cliente;
+import io.github.andresleao.com.batchproject.domain.GrupoLancamento;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.repository.JobRepository;
@@ -14,20 +14,20 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @RequiredArgsConstructor
-public class ReadFixedWidthFileStepConfig {
+public class DemonstrativoOrcamentarioStepConfig {
 
     private final JobRepository jobRepository;
     private final PlatformTransactionManager transactionManager;
 
     @Bean
-    public Step readFixedWidthFileStep(
-            ItemReader<Cliente> readingFixedWidthFileReader,
-            @Qualifier("readingFixedWidthFileWriter") ItemWriter<Cliente> readingFixedWidthFileWriter
+    public Step demonstrativoOrcamentarioStep(
+        @Qualifier("demonstrativoOrcamentarioReader") ItemReader<GrupoLancamento> demonstrativoOrcamentarioReader,
+        @Qualifier("demonstrativoOrcamentarioWriter") ItemWriter<GrupoLancamento> demonstrativoOrcamentarioWriter
     ) {
-        return new StepBuilder("readFixedWidthFileStep", jobRepository)
-                .<Cliente, Cliente>chunk(10, transactionManager)
-                .reader(readingFixedWidthFileReader)
-                .writer(readingFixedWidthFileWriter)
+        return new StepBuilder("demonstrativoOrcamentarioStep", jobRepository)
+                .<GrupoLancamento, GrupoLancamento>chunk(100, transactionManager)
+                .reader(demonstrativoOrcamentarioReader)
+                .writer(demonstrativoOrcamentarioWriter)
                 .build();
     }
 }

@@ -15,7 +15,7 @@ public class JdbcCursorReaderConfig {
 
     @Bean
     public JdbcCursorItemReader<Cliente> jdbcCursorReader(
-            @Qualifier("appDataSource")DataSource dataSource
+        @Qualifier("appDataSource")DataSource dataSource
     ) {
         return  new JdbcCursorItemReaderBuilder<Cliente>()
                 .name("jdbcCursorReader")

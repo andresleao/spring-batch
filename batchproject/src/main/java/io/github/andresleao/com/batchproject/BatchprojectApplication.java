@@ -48,25 +48,17 @@ public class BatchprojectApplication implements CommandLineRunner {
 //	@Qualifier("processorScriptJob")
 //	private Job job;
 
+//	@Autowired
+//	@Qualifier("processorClassifierJob")
+//	private Job job;
+
 	@Autowired
-	@Qualifier("processorClassifierJob")
+	@Qualifier("demonstrativoOrcamentarioJob")
 	private Job job;
 
 //	private static final Logger logger = LoggerFactory.getLogger(BatchprojectApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(BatchprojectApplication.class, args);
-//		SpringApplication app = new SpringApplication(BatchprojectApplication.class);
-//
-//		app.setDefaultProperties(
-//				Map.of("spring.config.location", "file:///C:/raro/batchproject/batchproject/etc/config/batchproject/application.yml")
-//		);
-//
-//		ConfigurableApplicationContext ctx = app.run(args);
-//
-//		String url = ctx.getEnvironment().getProperty("spring.datasource.jdbcUrl");
-//		System.out.println(">>>> URL DO BANCO: " + url);
-	}
+	public static void main(String[] args) {SpringApplication.run(BatchprojectApplication.class, args);}
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -74,9 +66,11 @@ public class BatchprojectApplication implements CommandLineRunner {
 				//.addString("name", "André", true) // helloJob
 				//.addString("clientsFile", "file:files/clientes.txt")
 				//.addString("clientsFile", "file:files/clientes_delimitado.txt")
+				//.addString("outputClientsFile", "file:files/clientes_saida.txt")
 				//.addString("clientsFile", "file:files/clientes_multiformats.txt")
 				//.addString("clientsFiles", "file:files/clients*")
-				.addString("clientsFile", "file:files/clientes_classifier.txt")
+				//.addString("clientsFile", "file:files/clientes_classifier.txt")
+				.addString("arquivosLancamento", "file:files/lancamento*")
 				.addLong("timestamp", System.currentTimeMillis())
 				.toJobParameters();
 
